@@ -3,221 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barangay eBlotter Module Specification (Revised)</title>
-    <!-- Load Tailwind CSS -->
+    <title>Barangay eBlotter Acceptance Testing</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom font for a document feel */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f7f7f7;
+            padding: 2rem;
         }
-        /* Style for the checkmark and dash */
-        .access-marker {
-            font-weight: 700;
-            color: #10b981; /* Green for checkmark */
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            overflow: hidden;
         }
-        .no-access-marker {
-            font-weight: 500;
-            color: #9ca3af; /* Gray for dash */
-        }
-        /* Style for Module Category row */
-        .module-category-row {
+        .header {
+            padding: 1rem;
+            text-align: center;
             background-color: #f3f4f6;
-            font-weight: 600;
-            text-align: left !important;
         }
-        /* Essential styles for the signature line and label */
-        .signature-line {
-            border-bottom: 1px solid #000;
-            display: block;
-            margin-top: 50px; /* Space for the signature */
-            height: 1px;
+        .table-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
         }
-        .signature-label {
-            margin-top: 5px;
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
             font-size: 0.875rem; /* text-sm */
-            font-weight: 600; /* font-semibold */
-            text-transform: uppercase;
+            vertical-align: top;
+        }
+        th {
+            background-color: #e5e7eb;
+            font-weight: 600;
+            color: #1f2937;
+            text-align: center;
+        }
+        .sub-header th {
+            background-color: #d1d5db;
+            font-weight: 500;
+        }
+        .criteria-col {
+            text-align: left;
+            font-weight: 400;
+        }
+        .approval-box {
+            background-color: #ff9966; /* Orange color for distinction */
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .other-considerations td {
+             padding: 1rem 0.75rem;
         }
     </style>
 </head>
-<body class="p-4 sm:p-8">
-
-    <div class="max-w-6xl mx-auto bg-white shadow-xl rounded-lg p-6 sm:p-10">
-
-        <!-- Title Section -->
-        <header class="text-center mb-8">
-            <h1 class="text-xl font-bold text-gray-900 mb-0">PROGRAM SPECIFICATION - LIST OF MODULES</h1>
-            <h2 class="text-lg font-semibold text-gray-700">Barangay eBlotter System</h2>
-        </header>
-
-        <!-- Responsive Table Container -->
-        <div class="overflow-x-auto rounded-lg border border-gray-200">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="table-title">ACCEPTANCE TEST CRITERIA MATRIX</div>
+        </div>
+        
+        <div class="overflow-x-auto">
+            <table>
+                <thead>
                     <tr>
-                        <th scope="col" class="py-3 px-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-r">Programmer</th>
-                        <th scope="col" class="py-3 px-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-r">Module Category</th>
-                        <th scope="col" class="py-3 px-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-r">Modules/Functionality</th>
-                        <th scope="col" class="py-3 px-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r">Staff/Secretary</th>
-                        <th scope="col" class="py-3 px-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">Captain/Lupon</th>
-                        <th scope="col" class="py-3 px-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">System Admin</th>
+                        <th rowspan="2" style="width: 5%;">No.</th>
+                        <th rowspan="2" style="width: 40%;">Acceptance Requirement</th>
+                        <th colspan="2" style="width: 15%;">Critical</th>
+                        <th colspan="2" style="width: 15%;">Test Result</th>
+                        <th rowspan="2" style="width: 25%;">Comments</th>
+                    </tr>
+                    <tr class="sub-header">
+                        <th>Yes</th>
+                        <th>No</th>
+                        <th>Accept</th>
+                        <th>Reject</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
-                    
-                    <!-- Module Category: Citizen Interface -->
+                <tbody>
+                    <!-- Citizen/Complainant Requirements (Chatbot & Public Interface) -->
+                    <tr><td colspan="7" class="bg-gray-100 font-semibold text-center py-2">CITIZEN/PUBLIC MODULE REQUIREMENTS</td></tr>
                     <tr>
-                        <td rowspan="3" class="py-2 px-3 whitespace-nowrap text-sm font-medium text-gray-900 border-r">Timario</td>
-                        <td rowspan="3" class="py-2 px-3 whitespace-nowrap text-sm font-semibold text-gray-700 border-r">Citizen Interface</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Submit Online Blotter/Complaint</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
+                        <td class="text-center">1</td>
+                        <td class="criteria-col">Citizen can submit an online blotter/complaint via the Chatbot interface successfully.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Receive/Validate Complaint Data</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
+                        <td class="text-center">2</td>
+                        <td class="criteria-col">Citizen receives a unique Case ID immediately after submission.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Track Case Status (Citizen View)</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
+                        <td class="text-center">3</td>
+                        <td class="criteria-col">Citizen can track the current status of their case using the Case ID and retrieve accurate, real-time status updates (e.g., Pending, Scheduled for Mediation, Closed).</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     
-                    <!-- Number of Points Row (Example for Citizen Interface) -->
-                    <tr class="module-category-row">
-                        <td colspan="2" class="py-1 px-3 text-xs uppercase font-bold text-right border-r">Number of Points</td>
-                        <td class="py-1 px-3 text-xs font-bold text-right border-r"></td>
-                        <td class="py-1 px-3 text-xs font-bold text-center border-r">2</td>
-                        <td class="py-1 px-3 text-xs font-bold text-center">0</td>
-                        <td class="py-1 px-3 text-xs font-bold text-center">0</td>
-                    </tr>
-                    
-                    <!-- Module Category: Case Management -->
+                    <!-- Staff/Secretary Requirements (Dashboard & Case Management) -->
+                    <tr><td colspan="7" class="bg-gray-100 font-semibold text-center py-2">STAFF/SECRETARY MODULE REQUIREMENTS</td></tr>
                     <tr>
-                        <td rowspan="4" class="py-2 px-3 whitespace-nowrap text-sm font-medium text-gray-900 border-r">Garin</td>
-                        <td rowspan="4" class="py-2 px-3 whitespace-nowrap text-sm font-semibold text-gray-700 border-r">Case Management</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Record New Incident Data (Walk-in)</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
+                        <td class="text-center">4</td>
+                        <td class="criteria-col">Barangay Staff can log in with valid credentials and access the appropriate dashboard.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Update Case Status/Details</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
+                        <td class="text-center">5</td>
+                        <td class="criteria-col">Staff can view all new complaints/blotters submitted by citizens.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Schedule Conciliation/Mediation</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
+                        <td class="text-center">6</td>
+                        <td class="criteria-col">Staff can successfully update the case status and details (e.g., set mediation date).</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Search & View Blotter Records</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
+                        <td class="text-center">7</td>
+                        <td class="criteria-col">Staff can record a new incident/blotter data directly into the system.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">8</td>
+                        <td class="criteria-col">System correctly prevents Staff from altering a case marked "Closed - Approved" by the Captain.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
 
-                    <!-- Number of Points Row (Example for Case Management) -->
-                    <tr class="module-category-row">
-                        <td colspan="2" class="py-1 px-3 text-xs uppercase font-bold text-right border-r">Number of Points</td>
-                        <td class="py-1 px-3 text-xs font-bold text-right border-r"></td>
-                        <td class="py-1 px-3 text-xs font-bold text-center border-r">4</td>
-                        <td class="py-1 px-3 text-xs font-bold text-center">1</td>
-                        <td class="py-1 px-3 text-xs font-bold text-center">1</td>
+                    <!-- Administrator/Captain Requirements (Access Control & Reporting) -->
+                    <tr><td colspan="7" class="bg-gray-100 font-semibold text-center py-2">ADMINISTRATOR/CAPTAIN MODULE REQUIREMENTS</td></tr>
+                    <tr>
+                        <td class="text-center">9</td>
+                        <td class="criteria-col">System Administrator can manage user accounts and assign/modify user roles (Staff, Captain).</td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">10</td>
+                        <td class="criteria-col">Barangay Captain can review a "Resolved" case and successfully execute the "Approve Decision" action.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">11</td>
+                        <td class="criteria-col">System generates statistical reports (including AI insights/visualizations) accurately and promptly.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
 
-                    <!-- Module Category: Decision & Reporting -->
+                    <!-- General System Requirements (Non-functional) -->
+                    <tr><td colspan="7" class="bg-gray-100 font-semibold text-center py-2">GENERAL SYSTEM REQUIREMENTS</td></tr>
                     <tr>
-                        <td rowspan="3" class="py-2 px-3 whitespace-nowrap text-sm font-medium text-gray-900 border-r">Alcoseba</td>
-                        <td rowspan="3" class="py-2 px-3 whitespace-nowrap text-sm font-semibold text-gray-700 border-r">Decision & Reporting</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Review & Approve Case Decisions</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
+                        <td class="text-center">12</td>
+                        <td class="criteria-col">System is responsive and functions correctly on various devices (desktop, mobile).</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Generate Statistical Reports (incl. AI Insights)</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
+                        <td class="text-center">13</td>
+                        <td class="criteria-col">The user interface is intuitive and requires minimal training for Staff to operate efficiently.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Export Select Records (PDF/CSV)</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
+                        <td class="text-center">14</td>
+                        <td class="criteria-col">All data (blotters, personal information) is stored securely in the cloud database.</td>
+                        <td></td><td></td><td></td><td></td><td></td>
                     </tr>
-
-                    <!-- Number of Points Row (Example for Decision & Reporting) -->
-                    <tr class="module-category-row">
-                        <td colspan="2" class="py-1 px-3 text-xs uppercase font-bold text-right border-r">Number of Points</td>
-                        <td class="py-1 px-3 text-xs font-bold text-right border-r"></td>
-                        <td class="py-1 px-3 text-xs font-bold text-center border-r">1</td>
-                        <td class="py-1 px-3 text-xs font-bold text-center">3</td>
-                        <td class="py-1 px-3 text-xs font-bold text-center">2</td>
-                    </tr>
-                    
-                    <!-- Module Category: System Administration -->
-                    <tr>
-                        <td rowspan="3" class="py-2 px-3 whitespace-nowrap text-sm font-medium text-gray-900 border-r">Timario</td>
-                        <td rowspan="3" class="py-2 px-3 whitespace-nowrap text-sm font-semibold text-gray-700 border-r">System Administration</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Manage User Accounts & Roles (Staff/Captain)</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">System Configuration (Barangay Details, etc.)</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-3 whitespace-nowrap text-sm text-gray-600 border-r">Backup & Restore Database</td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm border-r"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="no-access-marker">-</span></td>
-                        <td class="py-2 px-3 whitespace-nowrap text-center text-sm"><span class="access-marker">✓</span></td>
-                    </tr>
-
-                    <!-- Number of Points Row (Example for System Administration) -->
-                    <tr class="module-category-row">
-                        <td colspan="2" class="py-1 px-3 text-xs uppercase font-bold text-right border-r">Number of Points</td>
-                        <td class="py-1 px-3 text-xs font-bold text-right border-r"></td>
-                        <td class="py-1 px-3 text-xs font-bold text-center border-r">0</td>
-                        <td class="py-1 px-3 text-xs font-bold text-center">0</td>
-                        <td class="py-1 px-3 text-xs font-bold text-center">3</td>
-                    </tr>
-
-                    <!-- Footer Row: Total Number of Modules -->
-                    <tr class="bg-gray-200 font-extrabold">
-                        <td colspan="2" class="py-3 px-3 text-sm text-left border-r">Total Number of Modules</td>
-                        <td class="py-3 px-3 text-sm text-left border-r">13</td>
-                        <td colspan="3" class="py-3 px-3 text-sm text-center"></td>
-                    </tr>
-
                 </tbody>
             </table>
-        </div>
 
-        <!-- Signature Block Section (Adviser only, left-aligned) -->
-        <div class="mt-16 pt-10 px-10 text-left">
-            <!-- Adviser -->
-            <div class="inline-block w-72 text-center">
-                <span class="signature-line"></span>
-                <span class="signature-label block">Adviser's Signature</span>
+            <div class="px-4 pt-6 pb-2">
+                <div class="table-title text-base font-semibold text-left mb-2">OTHER CONSIDERATIONS</div>
+                <table class="other-considerations">
+                    <thead>
+                        <tr class="sub-header">
+                            <th style="width: 70%;" class="text-left">Question</th>
+                            <th style="width: 15%;">YES</th>
+                            <th style="width: 15%;">NO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="criteria-col">Business Objectives: Did the software application/system meet the barangay's objective of digitizing the blotter process and improving citizen access?</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="criteria-col">Does the software application/system require any setup prior to installation? If so, please describe.</td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="approval-box">
+                <div class="table-title text-base text-white font-semibold mb-2">APPROVAL</div>
+                <table>
+                    <thead>
+                        <tr class="sub-header">
+                            <th style="width: 25%;">Respondent</th>
+                            <th style="width: 25%;">Signature</th>
+                            <th style="width: 25%;">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="criteria-col"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
     </div>
-
 </body>
 </html>
