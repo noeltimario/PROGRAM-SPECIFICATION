@@ -3,221 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barangay eBlotter Acceptance Testing</title>
-    
+    <title>eBlotter System Functional Modules</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font and Dark Mode -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
-            padding: 2rem;
-        }
-        .container {
-            max-width: 1400px;
-            margin: auto;
-            background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-        .header {
-            padding: 1rem;
-            text-align: center;
-            background-color: #f3f4f6;
-        }
-        .table-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1f2937;
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid #d1d5db;
-            padding: 0.75rem;
-            font-size: 0.875rem; /* text-sm */
-            vertical-align: top;
-        }
-        th {
-            background-color: #e5e7eb;
-            font-weight: 600;
-            color: #1f2937;
-            text-align: center;
-        }
-        .sub-header th {
-            background-color: #d1d5db;
-            font-weight: 500;
-        }
-        .criteria-col {
-            text-align: left;
-            font-weight: 400;
-        }
-        .approval-box {
-            background-color: #ff9966; /* Orange color for distinction */
-            padding: 1rem;
-            margin-top: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .other-considerations td {
-             padding: 1rem 0.75rem;
+            background-color: #0d1117; /* Dark background */
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="table-title">ACCEPTANCE TEST CRITERIA MATRIX</div>
-        </div>
-        
-        <div class="overflow-x-auto">
-            <table>
-                <thead>
-                    <tr>
-                        <th rowspan="2" style="width: 5%;">No.</th>
-                        <th rowspan="2" style="width: 40%;">Acceptance Requirement</th>
-                        <th colspan="2" style="width: 15%;">Critical</th>
-                        <th colspan="2" style="width: 15%;">Test Result</th>
-                        <th rowspan="2" style="width: 25%;">Comments</th>
-                    </tr>
-                    <tr class="sub-header">
-                        <th>Yes</th>
-                        <th>No</th>
-                        <th>Accept</th>
-                        <th>Reject</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Citizen/Complainant Requirements (Chatbot & Public Interface) -->
-                    <tr><td colspan="7" class="bg-gray-100 font-semibold text-center py-2">CITIZEN/PUBLIC MODULE REQUIREMENTS</td></tr>
-                    <tr>
-                        <td class="text-center">1</td>
-                        <td class="criteria-col">Citizen can submit an online blotter/complaint via the Chatbot interface successfully.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">2</td>
-                        <td class="criteria-col">Citizen receives a unique Case ID immediately after submission.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">3</td>
-                        <td class="criteria-col">Citizen can track the current status of their case using the Case ID and retrieve accurate, real-time status updates (e.g., Pending, Scheduled for Mediation, Closed).</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    
-                    <!-- Staff/Secretary Requirements (Dashboard & Case Management) -->
-                    <tr><td colspan="7" class="bg-gray-100 font-semibold text-center py-2">STAFF/SECRETARY MODULE REQUIREMENTS</td></tr>
-                    <tr>
-                        <td class="text-center">4</td>
-                        <td class="criteria-col">Barangay Staff can log in with valid credentials and access the appropriate dashboard.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">5</td>
-                        <td class="criteria-col">Staff can view all new complaints/blotters submitted by citizens.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">6</td>
-                        <td class="criteria-col">Staff can successfully update the case status and details (e.g., set mediation date).</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">7</td>
-                        <td class="criteria-col">Staff can record a new incident/blotter data directly into the system.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">8</td>
-                        <td class="criteria-col">System correctly prevents Staff from altering a case marked "Closed - Approved" by the Captain.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
+<body class="min-h-screen p-4 md:p-8 text-white">
 
-                    <!-- Administrator/Captain Requirements (Access Control & Reporting) -->
-                    <tr><td colspan="7" class="bg-gray-100 font-semibold text-center py-2">ADMINISTRATOR/CAPTAIN MODULE REQUIREMENTS</td></tr>
-                    <tr>
-                        <td class="text-center">9</td>
-                        <td class="criteria-col">System Administrator can manage user accounts and assign/modify user roles (Staff, Captain).</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">10</td>
-                        <td class="criteria-col">Barangay Captain can review a "Resolved" case and successfully execute the "Approve Decision" action.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">11</td>
-                        <td class="criteria-col">System generates statistical reports (including AI insights/visualizations) accurately and promptly.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-black text-center mb-2 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">
+            eBlotter Functional Modules
+        </h1>
+        <p class="text-center text-gray-400 mb-10 text-sm">
+            Core capabilities related to the Client and Backend operations.
+        </p>
 
-                    <!-- General System Requirements (Non-functional) -->
-                    <tr><td colspan="7" class="bg-gray-100 font-semibold text-center py-2">GENERAL SYSTEM REQUIREMENTS</td></tr>
-                    <tr>
-                        <td class="text-center">12</td>
-                        <td class="criteria-col">System is responsive and functions correctly on various devices (desktop, mobile).</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">13</td>
-                        <td class="criteria-col">The user interface is intuitive and requires minimal training for Staff to operate efficiently.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">14</td>
-                        <td class="criteria-col">All data (blotters, personal information) is stored securely in the cloud database.</td>
-                        <td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="px-4 pt-6 pb-2">
-                <div class="table-title text-base font-semibold text-left mb-2">OTHER CONSIDERATIONS</div>
-                <table class="other-considerations">
-                    <thead>
-                        <tr class="sub-header">
-                            <th style="width: 70%;" class="text-left">Question</th>
-                            <th style="width: 15%;">YES</th>
-                            <th style="width: 15%;">NO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="criteria-col">Business Objectives: Did the software application/system meet the barangay's objective of digitizing the blotter process and improving citizen access?</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="criteria-col">Does the software application/system require any setup prior to installation? If so, please describe.</td>
-                            <td colspan="2"></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- Module Grid Container -->
+        <div class="space-y-4">
+            
+            <!-- Header Row (for structure/desktop view) -->
+            <div class="hidden md:grid md:grid-cols-5 font-semibold text-sm uppercase tracking-wider text-sky-400 border-b border-gray-700 pb-2 mb-2">
+                <div class="col-span-2">Module</div>
+                <div class="col-span-3">Description</div>
             </div>
 
-            <div class="approval-box">
-                <div class="table-title text-base text-white font-semibold mb-2">APPROVAL</div>
-                <table>
-                    <thead>
-                        <tr class="sub-header">
-                            <th style="width: 25%;">Respondent</th>
-                            <th style="width: 25%;">Signature</th>
-                            <th style="width: 25%;">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="criteria-col"></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Module Item Template -->
+            <div class="module-item p-4 bg-gray-800 rounded-lg shadow-xl hover:bg-gray-700/70 transition duration-200 border border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <div class="md:col-span-2">
+                        <p class="font-bold text-teal-300">Citizen Complaint Interface</p>
+                        <p class="md:hidden text-xs text-gray-400 mt-1">Enables Submission & Status Tracking via Chatbot.</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-sm text-gray-300 hidden md:block">Enables Complainants/Citizens to Submit Online Blotter/Complaint and subsequently Track Case Status via the Chatbot interface. (Directly from the Complainant/Citizen actor).</p>
+                    </div>
+                </div>
             </div>
+
+            <!-- Module Item Template -->
+            <div class="module-item p-4 bg-gray-800 rounded-lg shadow-xl hover:bg-gray-700/70 transition duration-200 border border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <div class="md:col-span-2">
+                        <p class="font-bold text-blue-300">Case Management & Updates</p>
+                        <p class="md:hidden text-xs text-gray-400 mt-1">Allows Staff to Record New Incident Data and Update Case Status/Details.</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-sm text-gray-300 hidden md:block">Allows Barangay Staff/Secretary to Record New Incident Data and Update Case Status/Details as the case progresses through the system.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module Item Template -->
+            <div class="module-item p-4 bg-gray-800 rounded-lg shadow-xl hover:bg-gray-700/70 transition duration-200 border border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <div class="md:col-span-2">
+                        <p class="font-bold text-purple-300">Conciliation & Mediation</p>
+                        <p class="md:hidden text-xs text-gray-400 mt-1">Function for Staff/Secretary to Schedule meetings.</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-sm text-gray-300 hidden md:block">A function available to Barangay Staff/Secretary to Schedule Conciliation/Mediation meetings related to open complaints.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module Item Template -->
+            <div class="module-item p-4 bg-gray-800 rounded-lg shadow-xl hover:bg-gray-700/70 transition duration-200 border border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <div class="md:col-span-2">
+                        <p class="font-bold text-indigo-300">Records Access & Search</p>
+                        <p class="md:hidden text-xs text-gray-400 mt-1">Used by all internal actors to Search & View Blotter Records.</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-sm text-gray-300 hidden md:block">Used by all internal actors (Staff, Administrator, Captain) to Search & View Blotter Records for investigation, review, and reference.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module Item Template -->
+            <div class="module-item p-4 bg-gray-800 rounded-lg shadow-xl hover:bg-gray-700/70 transition duration-200 border border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <div class="md:col-span-2">
+                        <p class="font-bold text-pink-300">User & Role Management</p>
+                        <p class="md:hidden text-xs text-gray-400 mt-1">Dedicated to the System Administrator for access control.</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-sm text-gray-300 hidden md:block">Dedicated to the System Administrator to Manage User Accounts & Roles for all Barangay personnel, ensuring proper access control.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Module Item Template -->
+            <div class="module-item p-4 bg-gray-800 rounded-lg shadow-xl hover:bg-gray-700/70 transition duration-200 border border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <div class="md:col-span-2">
+                        <p class="font-bold text-red-300">Decision Review & Approval</p>
+                        <p class="md:hidden text-xs text-gray-400 mt-1">Enables Captain/Lupon to Review & Approve Case Decisions before final closure.</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-sm text-gray-300 hidden md:block">The final stage in the case flow, enabling the Barangay Captain/Lupon to Review & Approve Case Decisions before final closure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module Item Template -->
+            <div class="module-item p-4 bg-gray-800 rounded-lg shadow-xl hover:bg-gray-700/70 transition duration-200 border border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <div class="md:col-span-2">
+                        <p class="font-bold text-yellow-300">AI Reporting & Insights</p>
+                        <p class="md:hidden text-xs text-gray-400 mt-1">Functionality for the System Administrator to Generate Statistical Reports.</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-sm text-gray-300 hidden md:block">Functionality for the System Administrator to Generate Statistical Reports (incl. AI Insights) for trend analysis and strategic planning.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Module Item Template -->
+            <div class="module-item p-4 bg-gray-800 rounded-lg shadow-xl hover:bg-gray-700/70 transition duration-200 border border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <div class="md:col-span-2">
+                        <p class="font-bold text-green-300">Security & Compliance</p>
+                        <p class="md:hidden text-xs text-gray-400 mt-1">Enforces end-to-end data encryption (HTTPS and database encryption) and strict role-based access control.</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-sm text-gray-300 hidden md:block">Enforces end-to-end data encryption (HTTPS and database encryption) and strict role-based access control to ensure data privacy and adherence to government regulations.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
+
 </body>
 </html>
